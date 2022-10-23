@@ -102,13 +102,13 @@ static int chip8_LoadROM(struct chip8 *c8, FILE *rom) {
 
 static void chip8_EmulateOneInstruction(struct chip8 *c8) {
     c8->opcode = c8->memory[c8->pc] << 8 | c8->memory[c8->pc + 1];
-    if(chip8_Decode(c8) == 0) {
+    if(chip8_ExecuteTheInstruction(c8) == 0) {
         INCREMENT_PC(c8->pc);
         if(c8->delayTimer > 0) { c8->delayTimer--; }
         if(c8->soundTimer > 0) { c8->soundTimer--; }
     }
     
-    printf("Opcode: %x\tMemory: %x\tI: %x\tSP: %x\tPC: %d\n", 
+    printf("Opcode: %x    Memory: %x    I: %x    SP: %x    PC: %d\n", 
            c8->opcode, c8->memory[c8->pc] << 8 | c8->memory[c8->pc + 1], c8->I, c8->sp, c8->pc);
 }
 
