@@ -1,6 +1,6 @@
 #include "chip8.h"
 
-#define INCREMENT_PC(pc) do { pc += 2; } while (0)
+#define INCREMENT_PC(pc) pc += 2;
 
 static void chip8_Init(struct chip8 *c8);
 static int chip8_LoadROM(struct chip8 *c8, FILE *file);
